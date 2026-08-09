@@ -8,13 +8,14 @@ class LowerCase(Runnable):
     def invoke(self, input: str) -> str:
         return input.lower()
 
+class AddExclamation(Runnable):
+    def invoke(self, input: str) -> str:
+        return input + "!"
+
 
 if __name__ == "__main__":
-    upper_runnable = UpperCase()
-    lower_runnable = LowerCase()
+    chain = UpperCase() | LowerCase() |  AddExclamation()
 
-    upper_text = upper_runnable.invoke("hello chainforge")
-    lower_text = lower_runnable.invoke("HELLO CHAINFORGE")
+    result = chain.invoke("Hello World")
 
-    print("Upper Case: ", upper_runnable)
-    print("Lower Case: ", lower_runnable)
+    print(result) 

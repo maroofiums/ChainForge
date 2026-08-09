@@ -1,3 +1,6 @@
-from .core import Runnable
+from .core import Runnable, Pipeline
 
-__all__ = ["Runnable"]
+__all__ = [
+    "Runnable",
+    "Pipeline"
+]

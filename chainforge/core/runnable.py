@@ -9,4 +9,7 @@ class Runnable(ABC):
         raise NotImplementedError
 
     
-    
+    def __or__(self, other: "Runnable") -> "Pipeline":
+        from .pipeline import Pipeline
+
+        return Pipeline([self, other])
