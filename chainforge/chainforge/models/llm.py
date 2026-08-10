@@ -1,5 +1,5 @@
 from chainforge.core import Runnable
-
+from abc import abstractmethod
 
 class BaseLLM(Runnable):
 
