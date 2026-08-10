@@ -37,3 +37,15 @@ class ReverseLLM(BaseLLM):
 
     def invoke(self, prompt: str) -> str:
         return prompt[::-1]
+
+class JsonFakeLLM(BaseLLM):
+
+    def __init__(self, model_name="json-fake-model"):
+        self._model_name = model_name
+
+    @property
+    def model_name(self) -> str:
+        return self._model_name
+
+    def invoke(self, prompt: str) -> str:
+        return f'{{"model": "{self.model_name}", "response": "Response to: {prompt}"}}'

@@ -1,18 +1,46 @@
-from chainforge import StrOutputParser, JsonOutputParser
+# from chainforge import StrOutputParser, JsonOutputParser
 
 
-parser = StrOutputParser()
+# parser = StrOutputParser()
 
-result = parser.invoke(
-    "   Hello ChainForge   "
+# result = parser.invoke(
+#     "   Hello ChainForge   "
+# )
+
+# print(result)
+
+# json_parser = JsonOutputParser()
+
+# result = json_parser.invoke(
+#     '{"name": "ChainForge", "type": "LLM Framework"}'
+# )   
+# print(result)
+# print(result["name"])  # Output: ChainForge
+
+
+from chainforge import (
+    PromptTemplate,
+    JsonFakeLLM,
+    JsonOutputParser,
 )
 
-print(result)
 
-json_parser = JsonOutputParser()
+prompt = PromptTemplate(
+    "Return information about {person}."
+)
 
-result = json_parser.invoke(
-    '{"name": "ChainForge", "type": "LLM Framework"}'
-)   
+llm = JsonFakeLLM()
+
+parser = JsonOutputParser()
+
+
+chain = prompt | llm | parser
+
+
+result = chain.invoke({
+    "person": "Maroof"
+})
+
+
 print(result)
-print(result["name"])  # Output: ChainForge
+print(type(result))
