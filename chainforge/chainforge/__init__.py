@@ -1,7 +1,7 @@
 from .core import Runnable, Pipeline
 from .prompts import PromptTemplate
 from .models import BaseLLM, FakeLLM, JsonFakeLLM
-from .parsers import StrOutputParser, JsonOutputParser
+from .parsers import StrOutputParser, JsonOutputParser, PydanticOutputParser
 
 __all__ = [
     "Runnable",
@@ -12,4 +12,5 @@ __all__ = [
     "JsonFakeLLM",
     "StrOutputParser",
     "JsonOutputParser",
+    "PydanticOutputParser",
 ]
